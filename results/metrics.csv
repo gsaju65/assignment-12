@@ -1,0 +1,5 @@
+model,cv_accuracy,test_accuracy,test_macro_f1
+baseline,0.38,0.404,0.144
+logistic_regression,0.657,0.673,0.64
+random_forest,0.669,0.707,0.592
+svm,0.731,0.771,0.734
