@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Full VisDrone download
+data/raw/
+*.zip
+
+# Features and trained models (the scripts re-create them)
+data/processed/
+models/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
