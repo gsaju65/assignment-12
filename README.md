@@ -1,7 +1,5 @@
 # Aerial Object Classifier
 
-Sourcing Data for Analytics, Week 12 · November 2026
-
 Can a simple model tell people, cars, trucks and motorbikes apart in drone images using only the outline of each object? This pipeline reuses the VisDrone
 images from my [Project 2](https://github.com/gsaju65/Project-2), crops out every labeled object, and trains classic scikit-learn models on HOG shape features.
 
@@ -43,7 +41,7 @@ and [`results/classification_report.txt`](results/classification_report.txt).
 | **Metric** | Test accuracy, plus macro F1 because the classes are not the same size |
 
 Splitting by flight matters. VisDrone images come in sequences from the same flight, so the same parked car shows up frame after frame. A random split would
-put near-copies of test objects into training and make the score look better than it is.
+put near-copies of test objects into training and make the score look better tham it is.
 
 ## Repository structure
 
@@ -64,7 +62,7 @@ put near-copies of test objects into training and make the score look better tha
   they are hard to tell apart from above. Tricycles are left out.
 - **Sample:** at most 40 objects of each class per flight, picked at random (seed 42), for 4,209 crops: 1,619 car/van, 968 two-wheeler, 959 person and
   663 truck/bus. It's the same idea as the 4-per-flight cap in Project 2.
-- **Not in this repo:** the images (301 MB; `src/download_data.py` re-creates them), the features and the trained models (the scripts re-create them).
+- **Not in this repo:** the images the features and the trained models.
 
 ## Reproduction
 
@@ -72,17 +70,17 @@ Requires Python 3.12. From the repository root:
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate          # macOS/Linux: source .venv/bin/activate
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-**Run the pipeline** (CPU only, under a minute after the download):
+**Run the pipeline**:
 
 ```bash
-python src/download_data.py     # 1,610 images and labels -> data/raw/
-python src/build_dataset.py     # crops + features -> data/processed/dataset.npz
-python src/train.py             # split, cross-validation, 4 models -> models/
-python src/evaluate.py          # scores -> results/, confusion matrix -> figures/
+python src/download_data.py
+python src/build_dataset.py
+python src/train.py
+python src/evaluate.py
 ```
 
 Runs used Python 3.12.10, scikit-learn 1.9.1 and scikit-image 0.26.0.
